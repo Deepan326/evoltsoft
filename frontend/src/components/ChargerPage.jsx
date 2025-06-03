@@ -17,8 +17,11 @@ const ChargerPage = () => {
 
   useEffect(() => {
     const fetchChargers = async () => {
+       const baseUrl= import.meta.env.VITE_URL
+      const endpoints=`/charging/tasks`
+      const url=`${baseUrl}${endpoints}`
       try {
-        const response = await fetch('http://localhost:5001/api/v1/charging/tasks');
+        const response = await fetch(url);
         const data = await response.json();
         if (data.success) {
           setChargers(data.tasks);
@@ -36,7 +39,10 @@ const ChargerPage = () => {
 
   const handleAddCharger = async () => {
     try {
-      const response = await fetch('http://localhost:5001/api/v1/charging/task', {
+        const baseUrl= import.meta.env.VITE_URL
+      const endpoints=`/charging/task`
+      const url=`${baseUrl}${endpoints}`
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newCharger),
@@ -56,8 +62,11 @@ console.log(data);
   };
 
   const handleDeleteCharger = async (id) => {
+      const baseUrl= import.meta.env.VITE_URL
+      const endpoints=`/charging/task/${id}`
+      const url=`${baseUrl}${endpoints}`
     try {
-      await fetch(`http://localhost:5001/api/v1/charging/task/${id}`, { method: 'DELETE' });
+      await fetch(url, { method: 'DELETE' });
       setChargers(chargers.filter((charger) => charger._id !== id));
       toast.success('Charger deleted successfully!');
     } catch (err) {
@@ -67,7 +76,10 @@ console.log(data);
 
   const handleUpdateCharger = async () => {
     try {
-      const response = await fetch(`http://localhost:5001/api/v1/charging/task/${editId}`, {
+        const baseUrl= import.meta.env.VITE_URL
+      const endpoints=`/charging/task/${editId}`
+      const url=`${baseUrl}${endpoints}`
+      const response = await fetch(url, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newCharger),

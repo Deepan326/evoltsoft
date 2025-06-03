@@ -13,7 +13,10 @@ export default function LoginForm() {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch("http://localhost:5001/api/v1/users/login", {
+      const baseUrl= import.meta.env.VITE_URL
+      const endpoints=`/users/login`
+      const url=`${baseUrl}${endpoints}`
+      const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

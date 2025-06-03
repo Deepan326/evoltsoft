@@ -15,7 +15,11 @@ export default function Registrationform() {
     setSuccess('');
 
     try {
-      const response = await fetch("http://localhost:5001/api/v1/users/register", {
+           const baseUrl= import.meta.env.VITE_URL
+          
+      const endpoints=`/users/register`
+      const url=`${baseUrl}${endpoints}`
+      const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include", 
