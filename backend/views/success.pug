@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Success
+    link(rel="stylesheet", href="/css/style.css")
+
+  body
+    h1 Congratulations!
+    p You have successfully logged in.
+    if username
+      p Welcome, #{username}
+    form(method="GET", action="/api/v1/users/logout")
+      button(type="submit") Logout

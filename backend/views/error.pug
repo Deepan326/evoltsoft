@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title Error
+    link(rel="stylesheet", href="/css/style.css")
+  body
+   div.error-container
+      h1 Error
+      p #{error}
+      a.try-again-btn(href="/api/v1/users/login") Try again
