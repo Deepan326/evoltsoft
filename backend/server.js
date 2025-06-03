@@ -17,7 +17,7 @@ if (isTestEnv) {
 }
 
 app.use(cors({
-  origin: "https://evoltsoft-app.netlify.app",
+  origin: "https://evoltsoftap.netlify.app",
   credentials: true
 }));
 
